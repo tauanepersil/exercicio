@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>LISTA DE TAREFAS</h1>
+
+    <input type="text"      id="tarefas" placeholder="Digite a tarefa"><br><br>
+    <input type="number"    id="prioridadeTarefa" placeholder="Prioridade da tarefa"><br><br>
+    <input type="date"      id="dataTarefa"><br><br>
+    
+    <button onclick="cadastroDeTarefas()">Cadastre a tarefa</button><br><br>
+    <button onclick="ordemDeNomes()">Ordem nome </button><br><br>
+    <button onclick="ordemDePrioridades()">Ordem de Prioridades</button><br><br>
+    <button onclick="ordemDescendente()">Ordem Alfabetica descendente</button><br><br>
+    <button onclick="ordemPrioridadesDescente()">Ordem Prioridade descendente</button><br><br>
+
+
+    <script>
+
+        var listaDeTarefas = [];
+
+        function cadastroDeTarefas(){
+
+
+            let tarefas = document.getElementById("tarefas").value;
+            let prioridadeTarefa = parseInt(document.getElementById("prioridadeTarefa").value);
+            let dataTarefa =document.getElementById("dataTarefa").value;
+
+            let tarefaNova = { tarefas, prioridadeTarefa, dataTarefa};
+
+            listaDeTarefas.push(tarefaNova);
+            console.log(listaDeTarefas)
+        }
+    
+
+        function ordenacaoNumerica(tarefaA, Tarefab){
+
+            if(tarefaA.prioridadeTarefa > Tarefab.prioridadeTarefa)
+                return 1; 
+            if(tarefaA.prioridadeTarefa < Tarefab.prioridadeTarefa)
+                return -1;
+            return 0;
+            }
+        
+    
+        function ordemDePrioridades(){
+            console.log(listaDeTarefas.sort(ordenacaoNumerica));
+
+            
+
+        }
+    
+
+        function ordemDeStrings(tarefaA, Tarefab){
+
+            if(tarefaA.tarefas > Tarefab.tarefas)
+                return 1;
+                if(tarefaA.tarefas < Tarefab.tarefas)
+                    return -1;
+                    return 0;
+            }
+            
+
+        function ordemDeNomes(tarefaA, Tarefab){
+           console.log(listaDeTarefas.sort(ordemDeStrings));
+
+        }
+    
+
+        function ordemDeStringsDesc(tarefaA, Tarefab){
+            
+            if(tarefaA.tarefas < Tarefab.tarefas)
+                return 1;
+                if(tarefaA.tarefas > Tarefab.tarefas)
+                    return -1;
+                    return 0;
+            }
+
+        
+        function ordemDescendente(tarefaA, Tarefab){
+            console.log(listaDeTarefas.sort(ordemDeStringsDesc));
+
+
+        }
+
+        function ordenacaoNumericaDesc(tarefaA, Tarefab){
+            if(tarefaA.prioridadeTarefa < Tarefab.prioridadeTarefa)
+                return 1; 
+            if(tarefaA.prioridadeTarefa > Tarefab.prioridadeTarefa)
+                return -1;
+            return 0;
+            }
+
+
+        
+        function ordemPrioridadesDescente(tarefaA, Tarefab) {
+            console.log(listaDeTarefas.sort(ordenacaoNumericaDesc));
+        }
+    
+    
+    </script>
+</body>
+</html>
